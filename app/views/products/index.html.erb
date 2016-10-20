@@ -1,0 +1,30 @@
+<h1>Listing products</h1>
+<a href="/comments">AlL Comments</a>
+<table>
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Description</td>
+      <td>Price</td>
+      <td>Category</td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= product.description %></td>
+      <td><%= number_to_currency(product.pricing) %></td>
+      <td><%= product.category.name %></td>
+      <td>
+        <a href="/products/<%= product.id %>">Show</a> |
+        <a href="/products/<%= product.id %>/edit">Edit</a> |
+        <a href="/products/<%= product.id %>" data-method="delete">Delete</a>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<a href="/products/new">New Product</a>
